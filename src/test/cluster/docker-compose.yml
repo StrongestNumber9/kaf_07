@@ -23,6 +23,12 @@ services:
         target: /run
     env_file:
       - "files/settings.env"
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /ipa_01.ready ] && ipactl status"]
+      interval: 10s
+      retries: 54
+      start_period: 60s
+      timeout: 10s
 
   # broker-one
   broker-one:
@@ -48,6 +54,9 @@ services:
         target: /run
     env_file:
       - "files/settings.env"
+    depends_on:
+      ipa:
+        condition: service_healthy
 
   # combined-two
   combined-two:
@@ -73,6 +82,10 @@ services:
         target: /run
     env_file:
       - "files/settings.env"
+    depends_on:
+      ipa:
+        condition: service_healthy
+
 
   # combined-three
   combined-three:
@@ -98,6 +111,10 @@ services:
         target: /run
     env_file:
       - "files/settings.env"
+    depends_on:
+      ipa:
+        condition: service_healthy
+
 
   # controller-four
   controller-four:
@@ -123,6 +140,10 @@ services:
         target: /run
     env_file:
       - "files/settings.env"
+    depends_on:
+      ipa:
+        condition: service_healthy
+
 
   # manager
   manager:
@@ -149,6 +170,10 @@ services:
       - ${RUNNER_TEMP}:/return
     env_file:
       - "files/settings.env"
+    depends_on:
+      ipa:
+        condition: service_healthy
+
 
 # Shared volume for the shared files
 volumes:
