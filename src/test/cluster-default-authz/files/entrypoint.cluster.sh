@@ -1,13 +1,4 @@
 #!/bin/bash
-IPA_CLIENT_FLAGS="${IPA_CLIENT_FLAGS:---force-join}"
-
-while ! nc -z "${IPA_SERVER_HOSTNAME}" 1337; do
-    sleep 1;
-done;
-
-# shellcheck disable=SC2086 # Client flags are intentionally without quotes.
-ipa-client-install --server "${IPA_SERVER_HOSTNAME}" --domain "${IPA_DOMAIN,,}" --unattended --no-ntp --principal "admin@${IPA_DOMAIN^^}" --password "${IPA_ADMIN_PASSWORD}" ${IPA_CLIENT_FLAGS};
-
 set -e
 echo "Running tests on $(/var/cfengine/bin/cf-agent -V)";
 

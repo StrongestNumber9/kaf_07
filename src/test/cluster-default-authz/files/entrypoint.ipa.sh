@@ -5,11 +5,6 @@ if [ ! -d /shared ]; then
     exit 1;
 fi;
 
-
-# Bootstrap ipa
-echo "Bootstrapping server";
-# shellcheck disable=SC2086 # Server flags are intentionally without quotes.
-ipa-server-install -U -n "${IPA_DOMAIN,,}" -r "${IPA_DOMAIN^^}" -p "${IPA_MANAGER_PASSWORD}" -a "${IPA_ADMIN_PASSWORD}" ${IPA_SERVER_FLAGS};
 echo "${IPA_ADMIN_PASSWORD}" | kinit admin;
 ipa pwpolicy-mod global_policy --maxlife=0 --minlife=0;
 
