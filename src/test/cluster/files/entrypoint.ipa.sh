@@ -37,6 +37,9 @@ echo "Adding users to groups";
 ipa group-add-member kafka-admins --users=admin-user
 ipa group-add-member kafka-users --users=normal-user
 
+# Just to signal health check
+touch /ipa_01.ready;
+
 echo "Waiting for poweroff connection";
 nc --verbose --recv-only --listen --source-port 12345;
 systemctl start poweroff.target;
