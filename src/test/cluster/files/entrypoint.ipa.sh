@@ -6,7 +6,7 @@ if [ ! -d /shared ]; then
 fi;
 set -e
 
-echo "${IPA_ADMIN_PASSWORD}" | kinit admin;
+echo "${IPA_01_ADMIN_PASSWORD}" | kinit admin;
 ipa pwpolicy-mod global_policy --maxlife=0 --minlife=0;
 
 # Force add host first so we don't have to do trickery between hosts joining and then creating keytabs and..
