@@ -1,4 +1,4 @@
-FROM ghcr.io/strongestnumber9/ipa_01/client/9:latest
+FROM ghcr.io/strongestnumber9/ipa_01/client/el9:latest
 RUN dnf install -y java-11-openjdk-headless
 COPY config/config-patch.json /config.json
 COPY config/cluster.properties /cluster.properties
