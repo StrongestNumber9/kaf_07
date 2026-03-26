@@ -1,5 +1,5 @@
 FROM ghcr.io/strongestnumber9/ipa_01/client/el9:latest
-RUN dnf install -y java-11-openjdk-headless jq
+RUN dnf install -y java-11-openjdk-headless jq nmap-ncat
 COPY config/config-patch.json /config.json
 COPY config/cluster.properties /cluster.properties
 COPY config/producer.properties /producer.properties

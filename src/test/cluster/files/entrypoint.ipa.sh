@@ -37,13 +37,6 @@ echo "Adding users to groups";
 ipa group-add-member kafka-admins --users=admin-user
 ipa group-add-member kafka-users --users=normal-user
 
-# Shutdown
-(
-    echo "Waiting for poweroff connection";
-    nc --verbose --recv-only --listen --source-port 12345;
-    systemctl start poweroff.target;
-) &
-
-# Allow clients to bootstrap
-echo "Starting to listen for connections";
-nc --verbose --no-shutdown --broker --recv-only --listen --source-port 1337;
+echo "Waiting for poweroff connection";
+nc --verbose --recv-only --listen --source-port 12345;
+systemctl start poweroff.target;

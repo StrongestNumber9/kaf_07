@@ -1,4 +1,4 @@
 FROM ghcr.io/strongestnumber9/ipa_01/server:latest
-RUN dnf install -y jq
+RUN dnf install -y jq nmap-ncat
 COPY config/ /config
 COPY files/entrypoint.ipa.sh /ipa_01.conf.d/post/entrypoint.sh

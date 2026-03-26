@@ -6,7 +6,6 @@ if [ ! -d /shared ]; then
 fi;
 set -x;
 
-export; #DEBUG
 echo "${IPA_01_ADMIN_PASSWORD}" | kinit admin;
 ipa pwpolicy-mod global_policy --maxlife=0 --minlife=0;
 
@@ -32,13 +31,6 @@ echo "Adding users to groups";
 ipa group-add-member kafka-admins --users=custom-admin
 ipa group-add-member kafka-users --users=custom-user
 
-# Shutdown
-(
-    echo "Waiting for poweroff connection";
-    nc --verbose --recv-only --listen --source-port 12345;
-    systemctl start poweroff.target;
-) &
-
-# Allow clients to bootstrap
-echo "Starting to listen for connections";
-nc --verbose --no-shutdown --broker --recv-only --listen --source-port 1337;
+echo "Waiting for poweroff connection";
+nc --verbose --recv-only --listen --source-port 12345;
+systemctl start poweroff.target;
