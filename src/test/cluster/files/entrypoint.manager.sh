@@ -1,11 +1,12 @@
 #!/bin/bash
+set -e;
 PREFIX="192.168.122";
 
 KAFKA_HOSTS="${PREFIX}.101:9093,${PREFIX}.102:9093,${PREFIX}.103:9093";
 
 # Generating jaas files
 echo "Creating jaas files";
-mkdir /jaas
+mkdir /jaas;
 
 # Generic users
 while read -r line; do

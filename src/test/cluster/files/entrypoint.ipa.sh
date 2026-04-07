@@ -29,7 +29,7 @@ done;
 # Create groups
 for group in $(jq -r '.[].group' /config/kaf_04/authorize.json); do
     echo "Creating group '${group}'";
-    ipa group-add "${group}"
+    ipa group-add "${group}";
 done;
 
 # Add users to groups

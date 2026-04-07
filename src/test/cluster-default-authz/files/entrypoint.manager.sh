@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e;
 PREFIX="192.168.121";
 
 KAFKA_HOSTS="${PREFIX}.101:9093,${PREFIX}.102:9093,${PREFIX}.103:9093";
