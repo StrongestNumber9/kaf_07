@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -e;
 echo "Running tests on $(/var/cfengine/bin/cf-agent -V)";
 
 # Patch config to point to right keytabs

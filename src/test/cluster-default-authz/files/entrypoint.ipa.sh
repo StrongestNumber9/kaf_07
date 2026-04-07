@@ -4,7 +4,7 @@ if [ ! -d /shared ]; then
     echo "Can't continue, /shared doesn't exist";
     exit 1;
 fi;
-set -x;
+set -e;
 
 echo "${IPA_01_ADMIN_PASSWORD}" | kinit admin;
 ipa pwpolicy-mod global_policy --maxlife=0 --minlife=0;
