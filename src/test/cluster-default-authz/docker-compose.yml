@@ -21,8 +21,8 @@ services:
       - shared:/shared
       - type: tmpfs
         target: /run
-    env_file:
-      - "files/settings.env"
+      - ./files/ipa_01_server.env:/ipa_01.conf.d/env/server.env
+      - ./files/ipa_01_common.env:/ipa_01.conf.d/env/common.env
     healthcheck:
       test: ["CMD-SHELL", "[ -f /ipa_01.ready ] && ipactl status"]
       interval: 10s
@@ -52,8 +52,8 @@ services:
       - shared:/shared
       - type: tmpfs
         target: /run
-    env_file:
-      - "files/settings.env"
+      - ./files/ipa_01_client.env:/ipa_01.conf.d/env/client.env
+      - ./files/ipa_01_common.env:/ipa_01.conf.d/env/common.env
     depends_on:
       ipa:
         condition: service_healthy
@@ -80,8 +80,8 @@ services:
       - shared:/shared
       - type: tmpfs
         target: /run
-    env_file:
-      - "files/settings.env"
+      - ./files/ipa_01_client.env:/ipa_01.conf.d/env/client.env
+      - ./files/ipa_01_common.env:/ipa_01.conf.d/env/common.env
     depends_on:
       ipa:
         condition: service_healthy
@@ -108,8 +108,8 @@ services:
       - shared:/shared
       - type: tmpfs
         target: /run
-    env_file:
-      - "files/settings.env"
+      - ./files/ipa_01_client.env:/ipa_01.conf.d/env/client.env
+      - ./files/ipa_01_common.env:/ipa_01.conf.d/env/common.env
     depends_on:
       ipa:
         condition: service_healthy
@@ -136,8 +136,8 @@ services:
       - shared:/shared
       - type: tmpfs
         target: /run
-    env_file:
-      - "files/settings.env"
+      - ./files/ipa_01_client.env:/ipa_01.conf.d/env/client.env
+      - ./files/ipa_01_common.env:/ipa_01.conf.d/env/common.env
     depends_on:
       ipa:
         condition: service_healthy
@@ -165,8 +165,8 @@ services:
       - type: tmpfs
         target: /run
       - ${RUNNER_TEMP}:/return
-    env_file:
-      - "files/settings.env"
+      - ./files/ipa_01_client.env:/ipa_01.conf.d/env/client.env
+      - ./files/ipa_01_common.env:/ipa_01.conf.d/env/common.env
     depends_on:
       ipa:
         condition: service_healthy
