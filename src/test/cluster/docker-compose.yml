@@ -188,5 +188,6 @@ networks:
       driver: default
       config:
        - subnet: 192.168.122.0/24
+         gateway: 192.168.122.1
        - subnet: fd12:4567:789a:1::/64
          gateway: fd12:4567:789a:1::1
