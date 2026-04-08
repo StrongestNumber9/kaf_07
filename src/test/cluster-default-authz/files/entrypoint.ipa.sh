@@ -26,17 +26,6 @@ for user in $(jq -r '.[].identity' /config/kaf_05/credentials.json); do
     ipa user-add "${user}" --first="${user}" --last="${user}";
 done;
 
-# Create groups manually
-for group in kafka-admins kafka-users; do
-    echo "Creating group '${group}'";
-    ipa group-add "${group}";
-done;
-
-# Add users to groups
-echo "Adding users to groups";
-ipa group-add-member kafka-admins --users=custom-admin
-ipa group-add-member kafka-users --users=custom-user
-
 # Just to signal health check
 touch /ipa_01.ready;
 
