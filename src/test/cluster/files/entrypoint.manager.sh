@@ -117,6 +117,9 @@ if ! [[ "${MESSAGE}" =~ "Created topic make-writer-topic" ]]; then
 fi;
 
 echo "Trying to create a topic with users permissions";
+# DEBUG
+set +e
+# /DEBUG
 MESSAGE="$(KAFKA_OPTS="-Djava.security.auth.login.config=/jaas/normal-user.user.jaas.conf" timeout -v 10s /opt/teragrep/kaf_06/bin/kafka-topics.sh --create --topic "should-not-be-created" --partitions 3 --replication-factor 3 --bootstrap-server "${KAFKA_HOSTS}" --command-config /producer.properties 2>&1;)";
 echo "Got content: ${MESSAGE}";
 if ! [[ "${MESSAGE}" =~ "TopicAuthorizationException: Authorization failed" ]]; then
