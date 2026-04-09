@@ -1,4 +1,4 @@
-FROM ghcr.io/strongestnumber9/cfp_01/plain/el9:0.0.5
+FROM ghcr.io/strongestnumber9/cfp_01/plain/el9:0.0.6
 
 # Install dependencies
 COPY rpm/kaf_07.rpm /kaf_07.rpm
