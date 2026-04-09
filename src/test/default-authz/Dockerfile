@@ -1,9 +1,8 @@
-FROM rockylinux/rockylinux:9
+FROM ghcr.io/strongestnumber9/cfp_01/plain/el9:0.0.5
 
 # Install dependencies
-COPY rpm/cfengine.rpm /cfengine.rpm
 COPY rpm/kaf_07.rpm /kaf_07.rpm
-RUN dnf -y install /cfengine.rpm /kaf_07.rpm jq nmap-ncat
+RUN dnf -y install /kaf_07.rpm jq nmap-ncat
 
 # Patch configs
 COPY config/config-patch.json /var/cfengine/private/cf-scripts/promises/com.teragrep-kaf_07/config/config-patch.json

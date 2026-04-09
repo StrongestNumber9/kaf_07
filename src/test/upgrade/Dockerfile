@@ -1,9 +1,8 @@
-FROM rockylinux/rockylinux:9
+FROM ghcr.io/strongestnumber9/cfp_01/plain/el9:0.0.5
 
 # Install dependencies
-COPY rpm/cfengine.rpm /cfengine.rpm
 COPY rpm/kaf_07.rpm /kaf_07.rpm
-RUN dnf -y install /cfengine.rpm /kaf_07.rpm jq nmap-ncat rpm-build
+RUN dnf -y install /kaf_07.rpm jq nmap-ncat rpm-build
 
 # Create dummy packages for upgrading
 COPY create_dummy_packages.sh /dummy/
