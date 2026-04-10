@@ -187,4 +187,4 @@ done;
 
 # All is good
 echo "Everything seems fine!";
-systemctl start poweroff.target;
+systemctl exit 0;
