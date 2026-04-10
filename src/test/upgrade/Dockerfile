@@ -1,4 +1,4 @@
-FROM ghcr.io/strongestnumber9/cfp_01/plain/el9:0.0.6
+FROM ghcr.io/strongestnumber9/cfp_01/systemd/el9:0.0.11
 
 # Install dependencies
 COPY rpm/kaf_07.rpm /kaf_07.rpm
@@ -21,9 +21,4 @@ COPY rpm/kaf_05.rpm /var/cfengine/private/cf-scripts/promises/com.teragrep-kaf_0
 COPY rpm/kaf_06.rpm /var/cfengine/private/cf-scripts/promises/com.teragrep-kaf_07/rpm/kaf_06.rpm
 
 # Bootstrap
-COPY tester.sh /tester.sh
-RUN chmod +x /tester.sh
-
-# Run
-ENTRYPOINT ["/tester.sh"]
-CMD [""]
+COPY cfp_01.entrypoint.sh /cfp_01.entrypoint.sh

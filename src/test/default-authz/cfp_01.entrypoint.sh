@@ -36,4 +36,4 @@ done;
 
 # All is good
 echo "Everything seems fine!";
-exit 0;
+systemctl start poweroff.target;
