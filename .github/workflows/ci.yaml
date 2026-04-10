@@ -40,4 +40,5 @@ jobs:
         run: cd "src/test/${{ matrix.test }}/" && podman build --tag "${{ matrix.test }}:latest" .
 
       - name: Run test
-        run: podman run --interactive "${{ matrix.test }}:latest"
+        timeout-minutes: 3
+        run: podman run --privileged --tty --interactive "${{ matrix.test }}:latest"
