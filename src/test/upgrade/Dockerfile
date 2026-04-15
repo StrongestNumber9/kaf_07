@@ -1,4 +1,4 @@
-FROM ghcr.io/strongestnumber9/cfp_01/systemd/el9:0.0.11
+FROM ghcr.io/strongestnumber9/cfp_01/systemd/el9:0.0.13
 
 # Install dependencies
 COPY rpm/kaf_07.rpm /kaf_07.rpm
