@@ -1,4 +1,4 @@
-FROM ghcr.io/strongestnumber9/cfp_01/systemd-ipa/el9:0.0.14
+FROM ghcr.io/strongestnumber9/cfp_01/systemd-ipa/el9:0.0.16
 RUN dnf install -y jq nmap-ncat java-1.8.0-openjdk-headless
 COPY rpm/kaf_07.rpm /kaf_07.rpm
 RUN dnf -y install /kaf_07.rpm
